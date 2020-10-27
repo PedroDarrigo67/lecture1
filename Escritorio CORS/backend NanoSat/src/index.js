@@ -4,10 +4,10 @@ const app = require('./app'); // importo de app.js
 //require('./database'); //llamo a database para conectar la base
 
 async function main() { //funcion que inicializa el programa
-    await app.listen(4000, '127.0.0.1'); //inicializo y que escuche
+    await app.listen(8000, '127.0.0.1'); //inicializo y que escuche
 
     //await app.listen(app.get('port')); //inicializo y que escuche
-    console.log('Server on port', 4000); // cadena de conexion
+    console.log('Server on port', 8000); // cadena de conexion
 }
 
 

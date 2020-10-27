@@ -1,22 +1,20 @@
-import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css';
-
-import Navigation from './Component/Navigation'
-import NoteList from './Component/NotesList'
-import CreateNote from './Component/CreateNote'
-import Server from './Component/Sever'
+import React from "react";
+import {
+  Route,
+  Switch,
+} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import listadoConos from './routes/NoteListRoute'
+import detallesConos from './routes/NoteDetailsRoute'
 
 function App() {
   return (
-    <Router>
-      <Navigation/>
-
-      <Route path="/" exact component={NoteList}/>
-      <Route path="/edit/:id" component={CreateNote}/>
-      <Route path="/server" component={Server}/>
-    </Router>
+    <div className="App">
+        <Switch>
+          <Route path="/" exact component={listadoConos} />
+          <Route path="/data/:id" exact component={detallesConos} />
+        </Switch>
+    </div>
   );
 }
 

@@ -1,42 +1,32 @@
-const express = require('express'); //importo el framework y guardo en una cte
-const cors = require('cors'); //conectar servidores
-const fs = require('fs')
+const express = require("express"); //importo el framework y guardo en una cte
+const cors = require("cors"); //conectar servidores
+const fs = require("fs");
 
-const app = express();  
+
+const app = express();
 
 // settings
-app.set('port', process.env.PORT || 4000); 
+app.set("port", process.env.PORT || 8000);
 
-// middlewares 
-app.use(cors()); 
+// middlewares
+app.use(cors());
 app.use(express.json());
 
-//objeto de JSON - agregar frecuencia de leido con la frecuencia de post(test de vida)
-const data1 = fs.readFileSync(`./dev-data/barrio.txt`, 'utf-8')
-const data = fs.readFileSync('./dev-data/TierrAlta.json', 'utf-8')
+// //objeto de JSON - agregar frecuencia de leido con la frecuencia de post(test de vida)
+const data = fs.readFileSync("./dev-data/cuenta.json", "utf-8");
 const dataObj = JSON.parse(data);
+dataObj.map(obj => {obj.date = new Date()})
 
 
-/*setTimeout(() => {
-    console.log('Hello, World!')
-    const data = fs.readFileSync('./dev-data/TierrAlta.json', 'utf-8')
-    const dataObj = JSON.parse(data);
-    console.log(data);
-  }, 3000);
-*/
-
-
-function tick() {
-  ReactDOM.render(
-    <Clock date={new Date()} />,
-    document.getElementById('root')
-  );
-}
-setInterval(tick, 1000);
-
- 
+setInterval(() => {
+  const data = fs.readFileSync("./dev-data/cuenta.json", "utf-8");
+  const dataObj = JSON.parse(data);
+  var meterObjeto = dataObj.map(obj => {obj.date = new Date()})
+  dataObj.push(meterObjeto)
+  console.log(dataObj);
+}, 3000);
 
 // routes
-app.get('/api/notes', (req, res) => res.send(data));
+app.get("/api/notes", (req, res) => res.send(dataObj));
 
-module.exports = app; 
+module.exports = app;
