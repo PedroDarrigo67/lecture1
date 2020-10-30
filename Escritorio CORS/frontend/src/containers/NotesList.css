@@ -59,3 +59,9 @@ details[open] > summary::after {
 details > summary::-webkit-details-marker {
   display: none;
 }
+
+.view_icon:hover{
+  color:inherit; 
+  color: rgb(15, 106, 136);
+  cursor: pointer;
+}

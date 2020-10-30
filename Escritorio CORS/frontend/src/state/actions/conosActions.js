@@ -12,7 +12,9 @@ export const fetchList = (ip) => async (dispatch) => {
   try {
     const res = await fetchNoteListAPI(ip);
     dispatch({ type: FETCH_LIST_FULFILL, payload: res });
+    
     if (res.status === "success") {
+      console.log(res)
     } else if (res.status === "fail") {
       dispatch({ type: FETCH_LIST_REJECT, payload: res.message });
     } else if (res.status === "error") {
@@ -21,6 +23,7 @@ export const fetchList = (ip) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: FETCH_LIST_REJECT, payload: error.message });
   }
+  
 };
 
 export const cleanErrorMsgList = () => {

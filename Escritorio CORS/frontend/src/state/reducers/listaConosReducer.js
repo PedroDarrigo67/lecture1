@@ -7,16 +7,17 @@ import {
 
 const initialState = {
   isFetching: false,
-  entities: [],
+  entity: null,
   fetchListErrorMessage: null,
+  currentEntity: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LIST_FULFILL:
-      return { ...state, isFetching: false, entities: action.payload };
+      return { ...state, isFetching: false, entity: action.payload };
     case FETCH_LIST_PENDING:
-      return { ...state, isFetching: true, entities: [] };
+      return { ...state, isFetching: true, entity: null };
     case FETCH_LIST_REJECT:
       return {
         ...state,
@@ -28,4 +29,5 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
+
 };

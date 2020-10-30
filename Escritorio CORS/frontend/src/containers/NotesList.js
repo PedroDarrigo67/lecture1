@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Table, Spinner, Collapse } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Table } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { cleanErrorMsgList } from "../state/actions/conosActions";
-import ErrorMessageModal from "../components/ErrorMessageModal";
+import Navbar from "../components/Navbar";
 import "./NotesList.css";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 
@@ -12,71 +12,22 @@ function NotesList() {
     return state.lista;
   });
 
+  console.log(lista.entity)
+
   var centralNombre = window.centralesInfo;
-
-  const [open, setOpen] = useState(false);
-
-  const dispatch = useDispatch();
-
-  if (lista.isFetching) {
-    return (
-      <Spinner
-        style={{ marginLeft: "50%", marginTop: "25%" }}
-        animation="grow"
-        variant="secondary"
-      />
-    );
-  }
-
-  const handleClearErrorMessage = () => {
-    dispatch(cleanErrorMsgList());
-  };
-
-  if (lista.isFetching) {
-    return (
-      <Spinner
-        style={{
-          marginLeft: "50%",
-          marginRight: "50%",
-          marginTop: "auto",
-          width: "250px",
-          height: "250px",
-          opacity: "0.5",
-        }}
-        animation="grow"
-        variant="secondary"
-      />
-    );
-  }
 
   return (
     <>
-      <h2
-        className="title"
-        style={{
-          color: "black",
-          textAlign: "center",
-          backgroundColor: "#F6FFD5",
-          padding: "0.5em",
-        }}
-      >
-        Listado de conos - Server oficina
-      </h2>
+      <Navbar title="Listado de conos - Server Oficina" />
 
-      <ErrorMessageModal
-        visible={lista.fetchListErrorMessage != null}
-        errorMessage={lista.fetchListErrorMessage}
-        handleClose={handleClearErrorMessage}
-      />
-      <p></p>
       <details open>
         {centralNombre.map((central) => (
-          <summary>
-            Central {central.nombre} - Fecha: {lista.date}
+          <summary key={central}>
+            Central {central.nombre} - Fecha de actualizacion: {lista.entity.date}
           </summary>
         ))}
 
-        {lista.entities.map((lista) => (
+        {lista.entity.conos.map((cono) => (
           <div className="faq__content">
             <Table
               striped
@@ -86,7 +37,7 @@ function NotesList() {
               size="lg"
               style={{ width: "75%", marginLeft: "auto", marginRight: "auto" }}
             >
-              <thead>
+              <thead key={cono}>
                 <tr>
                   <th>Cono ID</th>
                   <th>idComunicador</th>
@@ -97,64 +48,25 @@ function NotesList() {
                   <th>Detalles</th>
                 </tr>
               </thead>
-              <tbody key={lista.id}>
-              <td>{lista.id}</td>
-                <td>{lista.idComunicador}</td>
-                <td>{lista.imei}</td>
-                <td>{lista.descripcion}</td>
-                <td>{lista.codPanel}</td>
-                <td>{lista.idMesh}</td>
-                <td><VisibilityIcon className="view_icon" /></td>
+              <tbody key={cono.id}>
+                <td>{cono.id}</td>
+                <td>{cono.idComunicador}</td>
+                <td>{cono.imei}</td>
+                <td>{cono.descripcion}</td>
+                <td>{cono.codPanel}</td>
+                <td>{cono.idMesh}</td>
+                <td>
+                  <Link to={`/data/${cono.id}`}>
+                    <VisibilityIcon className="view_icon" />
+                  </Link>
+                </td>
               </tbody>
             </Table>
           </div>
         ))}
       </details>
-      {/* <div className="div-table">
-        <Table
-          striped
-          variant="light"
-          responsive="sm"
-          size="lg"
-          style={{ width: "75%", marginLeft: "auto", marginRight: "auto" }}
-        >
-
-          <thead>
-            <tr>
-              <th></th>
-              <th>CENTRAL</th>
-              <th>ULTIMA ACTUALIZACION</th>
-              <th>DETALLES</th>
-            </tr>
-          </thead>
-          {lista.entities.map((lista) => (
-            <tbody key={lista.id}>
-              <tr>
-                <td>
-                  <button
-                    className="btn btn-default btn-xs"
-                    onClick={() => setOpen(!open)}
-                    aria-controls="example-collapse-text"
-                    aria-expanded={open}
-                  >
-                    <VisibilityIcon />
-                  </button>
-                  <Collapse in={open}>
-                    <p style={{marginLeft: "2.5rem"}}id="example-collapse-text">Hola</p>
-                  </Collapse>
-                </td>
-                <td>{lista.id}</td>
-                <td>{lista.idComunicador}</td>
-                <td>
-                  <p style={{ fontWeight: "650" }}>Fecha {lista.date}</p>
-                </td>
-              </tr>
-            </tbody>
-          ))}
-        </Table>
-      </div> */}
     </>
-  );
+  )
 }
 
 export default NotesList;
