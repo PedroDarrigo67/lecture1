@@ -6,8 +6,6 @@ const app = express();
 
 // settings
 app.set("port", process.env.PORT || 8000);
-global.centrales;
-global.centrales = "FINCAS DEL SUR"
 
 let centralNombre = global.centrales;
 
@@ -26,7 +24,6 @@ obj.date =
   [nowDate.getDate(), nowDate.getMonth() + 1, nowDate.getFullYear()].join("/") +
   " a las " +
   [nowDate.getHours(), nowDate.getMinutes(), nowDate.getSeconds()].join(":");
-obj.central = centralNombre;
 
 setInterval(() => {
   let data = fs.readFileSync("./dev-data/cuenta.json", "utf-8");
@@ -39,7 +36,6 @@ setInterval(() => {
     ) +
     " a las " +
     [nowDate.getHours(), nowDate.getMinutes(), nowDate.getSeconds()].join(":");
-  obj.central = centralNombre;
 }, 300000);
 
 // routes
