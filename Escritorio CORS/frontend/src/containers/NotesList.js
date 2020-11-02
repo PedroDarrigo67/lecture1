@@ -13,19 +13,15 @@ function NotesList() {
   });
 
   console.log(lista.entity)
-
-  var centralNombre = window.centralesInfo;
-
+  
   return (
     <>
       <Navbar title="Listado de conos - Server Oficina" />
 
       <details open>
-        {centralNombre.map((central) => (
-          <summary key={central}>
-            Central {central.nombre} - Fecha de actualizacion: {lista.entity.date}
+          <summary>
+            Central {lista.entity.central} - Fecha de actualizacion: {lista.entity.date}
           </summary>
-        ))}
 
         {lista.entity.conos.map((cono) => (
           <div className="faq__content">

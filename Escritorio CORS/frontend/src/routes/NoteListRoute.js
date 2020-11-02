@@ -21,7 +21,7 @@ const ListadoConosRuta = () => {
   };
 
   if (lista.isFetching || lista.entity === null) {
-    return <SpinnerLoad />;
+    return <SpinnerLoad />
   }
 
   return (

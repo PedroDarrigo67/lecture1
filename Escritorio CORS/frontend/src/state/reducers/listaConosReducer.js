@@ -7,9 +7,11 @@ import {
 
 const initialState = {
   isFetching: false,
+  isFetchingCentral: false,
   entity: null,
   fetchListErrorMessage: null,
-  currentEntity: null
+  fetchCentralErrorMessage: null,
+  entities: [],
 };
 
 export default (state = initialState, action) => {
@@ -25,9 +27,8 @@ export default (state = initialState, action) => {
         fetchListErrorMessage: action.payload,
       };
     case CLEAN_ERRMSG_LIST:
-      return {...state, fetchListErrorMessage: null };
+      return { ...state, fetchListErrorMessage: null };
     default:
       return state;
   }
-
 };

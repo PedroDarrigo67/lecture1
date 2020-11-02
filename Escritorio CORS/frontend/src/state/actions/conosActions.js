@@ -10,20 +10,13 @@ export const fetchList = (ip) => async (dispatch) => {
   dispatch({ type: FETCH_LIST_PENDING });
 
   try {
-    const res = await fetchNoteListAPI(ip);
+    let res = await fetchNoteListAPI(ip);
+    console.log(res)
     dispatch({ type: FETCH_LIST_FULFILL, payload: res });
-    
-    if (res.status === "success") {
-      console.log(res)
-    } else if (res.status === "fail") {
-      dispatch({ type: FETCH_LIST_REJECT, payload: res.message });
-    } else if (res.status === "error") {
-      dispatch({ type: FETCH_LIST_REJECT, payload: res.message });
-    }
+    dispatch({ type: FETCH_LIST_REJECT, payload: res.message });
   } catch (error) {
     dispatch({ type: FETCH_LIST_REJECT, payload: error.message });
   }
-  
 };
 
 export const cleanErrorMsgList = () => {
