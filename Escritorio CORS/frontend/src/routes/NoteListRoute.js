@@ -11,8 +11,8 @@ const ListadoConosRuta = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    window.centralesInfo.forEach(({ ip }) => {
-      dispatch(fetchList(ip));
+    window.centralesInfo.forEach(({ ip, central }) => {
+      dispatch(fetchList(ip, central));
     });
   }, []);
 
@@ -20,8 +20,8 @@ const ListadoConosRuta = () => {
     dispatch(cleanErrorMsgList());
   };
 
-  if (lista.isFetching || lista.entity === null) {
-    return <SpinnerLoad />
+  if (lista.isFetching || lista.entities === null) {
+    return <SpinnerLoad />;
   }
 
   return (

@@ -6,12 +6,10 @@ import {
   FETCH_LIST_REJECT,
 } from "./constants";
 
-export const fetchList = (ip) => async (dispatch) => {
+export const fetchList = (ip, central) => async (dispatch) => {
   dispatch({ type: FETCH_LIST_PENDING });
-
   try {
-    let res = await fetchNoteListAPI(ip);
-    console.log(res)
+    let res = await fetchNoteListAPI(ip, central);
     dispatch({ type: FETCH_LIST_FULFILL, payload: res });
     dispatch({ type: FETCH_LIST_REJECT, payload: res.message });
   } catch (error) {

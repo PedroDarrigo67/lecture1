@@ -1,11 +1,12 @@
 import { panicoServer } from "../panicoServer";
 
-export const fetchNoteListAPI = async (ip) => {
+export const fetchNoteListAPI = async (ip, central) => {
   let notelist;
   await panicoServer
-    .get(`http://${ip}/api/notes`)
+    .get(`http://${ip}:8000/api/notes`)
     .then((response) => {
       notelist = response.data;
+      central = response.data
     })
     .catch((error) => {
       if (error.response) {

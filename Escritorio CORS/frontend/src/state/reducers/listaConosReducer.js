@@ -8,18 +8,18 @@ import {
 const initialState = {
   isFetching: false,
   isFetchingCentral: false,
-  entity: null,
+  entities: [],
   fetchListErrorMessage: null,
   fetchCentralErrorMessage: null,
-  entities: [],
+  currentEntity: null,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LIST_FULFILL:
-      return { ...state, isFetching: false, entity: action.payload };
+      return { ...state, isFetching: false, entities: [action.payload] };
     case FETCH_LIST_PENDING:
-      return { ...state, isFetching: true, entity: null };
+      return { ...state, isFetching: true};
     case FETCH_LIST_REJECT:
       return {
         ...state,

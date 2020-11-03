@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import "./NotesList.css";
 import VisibilityIcon from "@material-ui/icons/Visibility";
@@ -12,18 +12,21 @@ function NotesList() {
     return state.lista;
   });
 
-  console.log(lista.entity)
-  
+  console.log(lista.entities)
+
+
   return (
     <>
-      <Navbar title="Listado de conos - Server Oficina" />
+      {/* <Navbar title="LISTADO CENTRALES" />
 
       <details open>
+        {lista.entities.centralNombre.map((nombre) => (
           <summary>
-            Central {lista.entity.central} - Fecha de actualizacion: {lista.entity.date}
+            Central {nombre.nombreCentral}
+            <h1>Fecha de actualizacion: {lista.entities.date}</h1>
           </summary>
-
-        {lista.entity.conos.map((cono) => (
+        ))}
+        {lista.entities.conos.map((cono) => (
           <div className="faq__content">
             <Table
               striped
@@ -60,9 +63,9 @@ function NotesList() {
             </Table>
           </div>
         ))}
-      </details>
+      </details> */}
     </>
-  )
+  );
 }
 
 export default NotesList;
