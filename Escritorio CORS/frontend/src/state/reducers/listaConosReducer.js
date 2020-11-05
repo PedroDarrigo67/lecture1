@@ -1,5 +1,8 @@
 import {
   CLEAN_ERRMSG_LIST,
+  FETCH_CONO_FULFILL,
+  FETCH_CONO_PENDING,
+  FETCH_CONO_REJECT,
   FETCH_LIST_FULFILL,
   FETCH_LIST_PENDING,
   FETCH_LIST_REJECT,
@@ -7,17 +10,17 @@ import {
 
 const initialState = {
   isFetching: false,
-  isFetchingCentral: false,
-  entities: [],
+  isGetting: false,
+  currentEntity: [],
+  entities: null,
   fetchListErrorMessage: null,
-  fetchCentralErrorMessage: null,
-  currentEntity: null,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LIST_FULFILL:
-      return { ...state, isFetching: false, entities: [action.payload] };
+      return Object.assign({}, state, {entities: [action.payload]})
+      //{ ...state, isFetching: false, entities: [...state.entities, action.payload] };
     case FETCH_LIST_PENDING:
       return { ...state, isFetching: true};
     case FETCH_LIST_REJECT:

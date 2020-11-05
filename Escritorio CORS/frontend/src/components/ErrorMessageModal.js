@@ -6,9 +6,9 @@ const ErrorMessageModal = ({ visible, errorMessage, handleClose}) => {
     <>
       <Modal show={visible} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Error</Modal.Title>
+          <Modal.Title style={{color: "black"}}>Error en la lectura de central</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{errorMessage}</Modal.Body>
+        <Modal.Body style={{color: "red"}}>{errorMessage}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

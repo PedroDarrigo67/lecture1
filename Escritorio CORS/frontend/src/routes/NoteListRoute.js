@@ -7,7 +7,7 @@ import { fetchList } from "../state/actions/conosActions";
 import ErrorMessageModal from "../components/ErrorMessageModal";
 
 const ListadoConosRuta = () => {
-  const lista = useSelector((state) => state.lista);
+  const centrales = useSelector((state) => state.centrales);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const ListadoConosRuta = () => {
     dispatch(cleanErrorMsgList());
   };
 
-  if (lista.isFetching || lista.entities === null) {
+  if (centrales.isFetching || centrales.entities === null) {
     return <SpinnerLoad />;
   }
 
@@ -28,8 +28,8 @@ const ListadoConosRuta = () => {
     <div>
       <NotesList />
       <ErrorMessageModal
-        visible={lista.fetchListErrorMessage != null}
-        errorMessage={lista.fetchListErrorMessage}
+        visible={centrales.fetchListErrorMessage != null}
+        errorMessage={centrales.fetchListErrorMessage}
         handleClose={handleClearErrorMessage}
       />
       ;

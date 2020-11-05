@@ -5,7 +5,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 
 const reducers = combineReducers({
-  lista: listaConosReducer,
+  centrales: listaConosReducer,
 });
 
 const store = createStore(
