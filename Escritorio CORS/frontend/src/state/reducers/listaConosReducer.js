@@ -11,7 +11,7 @@ import {
 const initialState = {
   isFetching: false,
   isGetting: false,
-  currentEntity: [],
+  currentEntity: null,
   entities: null,
   fetchListErrorMessage: null,
 };
@@ -20,7 +20,6 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LIST_FULFILL:
       return Object.assign({}, state, {entities: [action.payload]})
-      //{ ...state, isFetching: false, entities: [...state.entities, action.payload] };
     case FETCH_LIST_PENDING:
       return { ...state, isFetching: true};
     case FETCH_LIST_REJECT:
@@ -29,6 +28,16 @@ export default (state = initialState, action) => {
         isFetching: false,
         fetchListErrorMessage: action.payload,
       };
+      case FETCH_CONO_FULFILL:
+        return {...state, isGetting: false, currentEntity: action.payload}
+      case FETCH_CONO_PENDING:
+        return { ...state, isGetting: true };
+      case FETCH_CONO_REJECT:
+        return {
+          ...state,
+          isGetting: false,
+          fetchConoErrorMessage: action.payload,
+        };
     case CLEAN_ERRMSG_LIST:
       return { ...state, fetchListErrorMessage: null };
     default:

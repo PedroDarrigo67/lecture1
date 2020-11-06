@@ -11,6 +11,7 @@ function NotesList() {
   const centrales = useSelector((state) => {
     return state.centrales;
   });
+
   return (
     <>
       <Navbar title="LISTADO CENTRALES" />
@@ -18,7 +19,7 @@ function NotesList() {
       {centrales.entities.map((central) => (
         <details open>
           <summary>
-            Central: {central.centralNombre} - Fecha de actualizacion: {central.date}
+            Central: {central.nombreCentral.nombre} - Fecha de actualizacion: {central.date}
           </summary>
           {central.conos.map((cono) => (
             <div className="faq__content">
@@ -51,7 +52,7 @@ function NotesList() {
                   <td>{cono.codPanel}</td>
                   <td>{cono.idMesh}</td>
                   <td>
-                    <Link to={`/data/${cono.id}`}>
+                    <Link to={`/central/${central.nombreCentral.nombre}/${cono.id}`}>
                       <VisibilityIcon className="view_icon" />
                     </Link>
                   </td>

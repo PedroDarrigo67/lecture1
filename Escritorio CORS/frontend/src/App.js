@@ -12,7 +12,7 @@ function App() {
     <div className="App">
         <Switch>
           <Route path="/" exact component={listadoConos} />
-          <Route path="/data/:id" exact component={detallesConos} />
+          <Route path="/central/:nombre/:id" exact component={detallesConos} />
         </Switch>
     </div>
   );
