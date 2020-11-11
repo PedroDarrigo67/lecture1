@@ -1,0 +1,25 @@
+[
+    {
+      "_id": "5f78865ad8dffd234cadc334",
+      "barrio": "55",
+      "imei": null,
+      "descripcion": null,
+      "codPanel": null,
+      "idmesh": null,
+      "latitud": null,
+      "longitud": null,
+      "geoPosicionManual": null,
+      "firmware": null,
+      "tensionAlimentacionRadioMesh": null,
+      "tensionBateria": null,
+      "tensionAlimentacionNV5900": null,
+      "firmwareMesh": null,
+      "estadoMesh": null,
+      "routerCone": null,
+      "fechaR0": null,
+      "createdAt": "2020-10-03T14:10:34.172Z",
+      "updatedAt": "2020-10-03T14:14:32.958Z",
+      "__v": 0,
+      "idcomunicador": null
+    }
+]

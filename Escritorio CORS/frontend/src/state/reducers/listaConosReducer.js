@@ -11,7 +11,7 @@ import {
 const initialState = {
   isFetching: false,
   isGetting: false,
-  currentEntity: null,
+  currentCono: null,
   entities: null,
   fetchListErrorMessage: null,
 };
@@ -29,7 +29,11 @@ export default (state = initialState, action) => {
         fetchListErrorMessage: action.payload,
       };
       case FETCH_CONO_FULFILL:
-        return {...state, isGetting: false, currentEntity: action.payload}
+        return {
+          ...state,
+          currentCono: action.payload,
+          isFetching: false,
+        };
       case FETCH_CONO_PENDING:
         return { ...state, isGetting: true };
       case FETCH_CONO_REJECT:

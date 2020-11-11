@@ -4,18 +4,18 @@ import { useSelector } from "react-redux";
 import { ListGroup } from "react-bootstrap";
 
 function NoteDetails() {
-  const currentCentral = useSelector((state) => {
-    return state.centrales;
-  });
-
-  console.log(currentCentral.currentEntity);
+  const currentCentral = useSelector((state) => state.centrales.currentCono);
 
   return (
     <>
       <Navbar title="DETALLES" />
 
-      {currentCentral.currentEntity.map((cono) => (
-        <ListGroup horizontal= "true" variant="flush" style={{ color: "black", marginLeft: "1rem", marginRight: "1rem" }}>
+      {currentCentral.map((cono) => (
+        <ListGroup
+          horizontal="true"
+          variant="flush"
+          style={{ color: "black", marginLeft: "1rem", marginRight: "1rem" }}
+        >
           <ListGroup.Item>imei: {cono.imei}</ListGroup.Item>
           <ListGroup.Item>idComunicador: {cono.idComunicador}</ListGroup.Item>
           <ListGroup.Item>descripcion: {cono.descripcion}</ListGroup.Item>

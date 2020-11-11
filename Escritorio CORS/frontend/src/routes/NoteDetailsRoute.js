@@ -4,9 +4,7 @@ import SpinnerLoad from "../components/SpinnerLoad";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCono } from "../state/actions/conosActions";
 
-
 const NoteDetailsRoute = () => {
-
   const centrales = useSelector((state) => state.centrales);
   const dispatch = useDispatch();
 
@@ -16,7 +14,7 @@ const NoteDetailsRoute = () => {
     });
   }, []);
 
-  if (centrales.isGetting || centrales.currentEntity === null) {
+  if (centrales.isGetting || centrales.currentCono === null) {
     return <SpinnerLoad />;
   }
   return (

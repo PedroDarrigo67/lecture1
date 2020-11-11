@@ -15,7 +15,6 @@ function NotesList() {
   return (
     <>
       <Navbar title="LISTADO CENTRALES" />
-
       {centrales.entities.map((central) => (
         <details open>
           <summary>

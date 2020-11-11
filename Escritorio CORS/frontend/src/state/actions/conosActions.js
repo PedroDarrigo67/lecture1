@@ -15,18 +15,16 @@ export const fetchList = (ip) => async (dispatch) => {
     let res = await fetchNoteListAPI(ip);
     window.centralesInfo.map(({nombre}, index) => res.nombreCentral = ({...res[index], nombre}));
     dispatch({ type: FETCH_LIST_FULFILL, payload: res });
-    dispatch({ type: FETCH_LIST_REJECT, payload: res.message });
   } catch (error) {
     dispatch({ type: FETCH_LIST_REJECT, payload: error.message });
   }
 };
 
-export const fetchCono = (ip, id) => async (dispatch) => {
+export const fetchCono = (ip) => async (dispatch) => {
   dispatch({ type: FETCH_CONO_PENDING });
   try {
-    let res = await fetchConoAPI(ip, id);
+    let res = await fetchConoAPI(ip);
     dispatch({ type: FETCH_CONO_FULFILL, payload: res.conos });
-    dispatch({ type: FETCH_CONO_REJECT, payload: res.message });
   } catch (error) {
     dispatch({ type: FETCH_CONO_REJECT, payload: error.message });
   }
