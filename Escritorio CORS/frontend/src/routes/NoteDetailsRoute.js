@@ -11,8 +11,8 @@ const NoteDetailsRoute = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    window.centralesInfo.forEach(({ ip, central }) => {
-      dispatch(fetchCono(ip, central));
+    window.centralesInfo.forEach(({ ip, id }) => {
+      dispatch(fetchCono(ip, id));
     });
   }, []);
 

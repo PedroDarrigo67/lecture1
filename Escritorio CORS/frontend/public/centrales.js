@@ -29,10 +29,10 @@
 window.centralesInfo = [
   {
     nombre: "Ni idea",
-    ip: `181.31.155.212`,
+    ip: `localhost:8001`,
   },
   {
     nombre: "Fincas del Sur",
-    ip: `localhost`,
+    ip: `localhost:8000`,
   },
 ];

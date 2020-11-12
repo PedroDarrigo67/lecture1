@@ -12,7 +12,7 @@ const initialState = {
   isFetching: false,
   isGetting: false,
   currentEntity: null,
-  entities: null,
+  entities: [],
   fetchListErrorMessage: null,
 };
 

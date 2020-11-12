@@ -20,13 +20,9 @@ const ListadoConosRuta = () => {
     dispatch(cleanErrorMsgList());
   };
 
-  if (centrales.isFetching || centrales.entities === null) {
-    return <SpinnerLoad />;
-  }
-
   return (
     <div>
-      <NotesList />
+      {centrales.isFetching || centrales.entities === null ? <SpinnerLoad /> :  <NotesList />}
       <ErrorMessageModal
         visible={centrales.fetchListErrorMessage != null}
         errorMessage={centrales.fetchListErrorMessage}
