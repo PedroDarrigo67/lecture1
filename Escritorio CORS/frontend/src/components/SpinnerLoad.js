@@ -6,7 +6,6 @@ const SpinnerLoad = () => {
   return (
     <div>
       <Spinner
-        style={{ marginLeft: "50%", marginTop: "25%" }}
         animation="grow"
         variant="secondary"
       />

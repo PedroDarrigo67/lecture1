@@ -1,6 +1,6 @@
 import { panicoServer } from "../panicoServer";
 
-export const fetchNoteListAPI = async (ip) => {
+export const fetchNoteListAPI = async (ip) => {  
   return panicoServer
     .get(`http://${ip}/api/notes`)
     .then((response) => {
